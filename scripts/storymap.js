@@ -120,7 +120,7 @@ $(window).on('load', function() {
       });
 
       var marker = L.marker(
-        [parseFloat(c['Longitude']), parseFloat(c['Latitude'])],
+        [parseFloat(c['Latitude']), parseFloat(c['Longitude'])],
         {icon: numericMarker}
       );
 
@@ -178,7 +178,7 @@ $(window).on('load', function() {
         if ($(this).scrollTop() >= pixelsAbove[i] && $(this).scrollTop() < (pixelsAbove[i+1] - 2 * chapterContainerMargin)) {
           $('.chapter-container').removeClass("in-focus").addClass("out-focus");
           $('div#container' + i).addClass("in-focus").removeClass("out-focus");
-          map.flyTo([chapters[i]['Longitude'], chapters[i]['Latitude']], chapters[i]['Zoom']);
+          map.flyTo([chapters[i]['Latitude'], chapters[i]['Longitude']], chapters[i]['Zoom']);
         }
       }
     });
