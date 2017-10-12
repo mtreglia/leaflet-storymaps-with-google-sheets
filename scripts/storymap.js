@@ -115,7 +115,7 @@ $(window).on('load', function() {
       // OR remove the next 6 lines for default blue Leaflet markers
       var numericMarker = L.ExtraMarkers.icon({
         icon: 'fa-number',
-        number: parseInt(i) + 1,
+        number: '',
         markerColor: 'blue'
       });
 
