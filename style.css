@@ -126,6 +126,10 @@ h3 {
     padding: 20px;
 }
 
+.description p {
+    text-align: left;
+}
+
 .in-focus {
     opacity: 1.0;
 }
