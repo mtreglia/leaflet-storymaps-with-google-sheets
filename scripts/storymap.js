@@ -119,12 +119,13 @@ $(window).on('load', function() {
         markerColor: 'blue'
       });
 
-      var marker = L.marker(
-        [parseFloat(c['Latitude']), parseFloat(c['Longitude'])],
-        {icon: numericMarker}
-      );
-
-      markers.push(marker);
+      if (!isNaN(parseFloat(c['Latitude'])) && !isNaN(parseFloat(c['Longitude']))) {
+        var marker = L.marker(
+          [parseFloat(c['Latitude']), parseFloat(c['Longitude'])],
+          {icon: numericMarker}
+        );
+        markers.push(marker);
+      }
 
       var image = $('<img>', {
         src: c['Image Link'],
@@ -178,7 +179,10 @@ $(window).on('load', function() {
         if ($(this).scrollTop() >= pixelsAbove[i] && $(this).scrollTop() < (pixelsAbove[i+1] - 2 * chapterContainerMargin)) {
           $('.chapter-container').removeClass("in-focus").addClass("out-focus");
           $('div#container' + i).addClass("in-focus").removeClass("out-focus");
-          map.flyTo([chapters[i]['Latitude'], chapters[i]['Longitude']], chapters[i]['Zoom']);
+
+          if (chapters[i]['Latitude']) {
+            map.flyTo([chapters[i]['Latitude'], chapters[i]['Longitude']], chapters[i]['Zoom']);
+          }
         }
       }
     });
