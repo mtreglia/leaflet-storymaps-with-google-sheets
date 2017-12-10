@@ -220,8 +220,11 @@ $(window).on('load', function() {
     var bounds = [];
     for (i in markers) {
       markers[i].addTo(map);
+      markers[i]['_pixelsAbove'] = pixelsAbove[i];
       markers[i].on('click', function() {
-        $('div#contents').animate({scrollTop: pixelsAbove[i] + 'px'});
+        var pixels = parseInt($(this)[0]['_pixelsAbove']) + 5;
+        $('div#contents').animate({
+          scrollTop: pixels + 'px'});
       });
       bounds.push(markers[i].getLatLng());
     }
